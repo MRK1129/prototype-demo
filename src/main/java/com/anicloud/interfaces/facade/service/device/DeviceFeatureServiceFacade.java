@@ -1,7 +1,7 @@
 package com.anicloud.interfaces.facade.service.device;
 
 
-import com.anicloud.interfaces.facade.dto.DeviceFeatureDto;
+import com.anicloud.application.dto.device.DeviceFeatureDto;
 
 import java.util.List;
 

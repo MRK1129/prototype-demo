@@ -2,7 +2,7 @@ package com.anicloud.interfaces.facade.service.device;
 
 import com.anicloud.application.service.device.DeviceFeatureService;
 import com.anicloud.interfaces.facade.adapter.DeviceFeatureDtoAdapter;
-import com.anicloud.interfaces.facade.dto.DeviceFeatureDto;
+import com.anicloud.application.dto.device.DeviceFeatureDto;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;

@@ -5,9 +5,9 @@ package com.anicloud.interfaces.facade.adapter;
 import com.anicloud.domain.model.device.DeviceFeature;
 import com.anicloud.domain.model.device.FeatureArg;
 import com.anicloud.domain.model.device.StubIdentity;
-import com.anicloud.interfaces.facade.dto.DeviceFeatureDto;
-import com.anicloud.interfaces.facade.dto.FeatureArgDto;
-import com.anicloud.interfaces.facade.dto.StubIdentityDto;
+import com.anicloud.application.dto.device.DeviceFeatureDto;
+import com.anicloud.application.dto.device.FeatureArgDto;
+import com.anicloud.application.dto.device.StubIdentityDto;
 
 import java.util.*;
 
