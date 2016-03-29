@@ -1,9 +1,8 @@
 package com.anicloud.application.service.device;
 
 import com.ani.cel.service.manager.agent.core.share.DeviceState;
-import com.anicloud.application.dto.device.DeviceDto;
+import com.anicloud.interfaces.facade.dto.device.DeviceDto;
 import com.anicloud.domain.model.device.DeviceLogicState;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

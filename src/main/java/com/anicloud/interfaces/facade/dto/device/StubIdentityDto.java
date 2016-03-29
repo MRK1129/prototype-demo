@@ -1,4 +1,4 @@
-package com.anicloud.application.dto.device;
+package com.anicloud.interfaces.facade.dto.device;
 
 import java.io.Serializable;
 

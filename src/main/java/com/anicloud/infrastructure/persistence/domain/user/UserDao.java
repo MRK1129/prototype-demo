@@ -14,9 +14,8 @@ import java.util.Set;
 public class UserDao {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
-    public Integer userId;
+    @Column(name = "id")
+    public Integer id;
     @Column(length = 50)
     public String hashUserId;
     @Column(length = 30)
@@ -41,11 +40,11 @@ public class UserDao {
     public UserDao() {
     }
 
-    public UserDao(Integer userId,String hashUserId, String email, String screenName,
+    public UserDao(Integer id,String hashUserId, String email, String screenName,
                    String accessToken, String tokenType, String refreshToken,
                    Long expiresIn, String scope, Long createTime,
                    Set<DeviceDao> deviceSet) {
-        this.userId=userId;
+        this.id=id;
         this.hashUserId = hashUserId;
         this.email = email;
         this.screenName = screenName;

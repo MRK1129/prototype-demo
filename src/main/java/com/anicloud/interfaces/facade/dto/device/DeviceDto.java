@@ -1,7 +1,7 @@
-package com.anicloud.application.dto.device;
+package com.anicloud.interfaces.facade.dto.device;
 
 import com.ani.cel.service.manager.agent.core.share.DeviceState;
-import com.anicloud.application.dto.user.UserDto;
+import com.anicloud.interfaces.facade.dto.user.UserDto;
 import com.anicloud.domain.model.device.DeviceLogicState;
 
 import java.io.Serializable;

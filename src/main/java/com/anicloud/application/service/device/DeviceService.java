@@ -1,7 +1,8 @@
 package com.anicloud.application.service.device;
 
+import com.ani.bus.service.commons.dto.anidevice.DeviceMasterObjInfoDto;
 import com.ani.cel.service.manager.agent.core.share.DeviceState;
-import com.anicloud.application.dto.device.DeviceDto;
+import com.anicloud.interfaces.facade.dto.device.DeviceDto;
 import com.anicloud.domain.model.device.DeviceLogicState;
 
 import java.util.List;
@@ -17,6 +18,4 @@ public interface DeviceService {
     void remove(DeviceDto deviceDto);
     void modifyDeviceState(DeviceDto deviceDto, DeviceState deviceState);
     void modifyDeviceLogicState(DeviceDto deviceDto, DeviceLogicState deviceLogicState);
-
-
 }

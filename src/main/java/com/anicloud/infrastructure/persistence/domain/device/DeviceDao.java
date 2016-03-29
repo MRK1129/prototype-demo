@@ -14,7 +14,6 @@ import javax.persistence.*;
 public class DeviceDao {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;
     @Column
     public String identificationCode;       // id of device, consist of masterDeviceId and slaveDeviceId
@@ -35,9 +34,10 @@ public class DeviceDao {
     public DeviceDao() {
     }
 
-    public DeviceDao(String identificationCode, String name,
+    public DeviceDao(Integer id,String identificationCode, String name,
                      DeviceState deviceState, DeviceLogicState logicState,
                      String deviceType, String deviceGroup, UserDao owner) {
+        this.id = id;
         this.identificationCode = identificationCode;
         this.name = name;
         this.deviceState = deviceState;

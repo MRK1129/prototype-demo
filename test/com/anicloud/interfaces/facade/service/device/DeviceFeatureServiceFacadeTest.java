@@ -1,9 +1,9 @@
 package com.anicloud.interfaces.facade.service.device;
 
 import com.ani.bus.service.commons.dto.anidevice.stub.DataType;
-import com.anicloud.application.dto.device.DeviceFeatureDto;
-import com.anicloud.application.dto.device.FeatureArgDto;
-import com.anicloud.application.dto.device.StubIdentityDto;
+import com.anicloud.interfaces.facade.dto.device.DeviceFeatureDto;
+import com.anicloud.interfaces.facade.dto.device.FeatureArgDto;
+import com.anicloud.interfaces.facade.dto.device.StubIdentityDto;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;

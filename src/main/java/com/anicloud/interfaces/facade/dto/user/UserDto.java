@@ -1,6 +1,6 @@
-package com.anicloud.application.dto.user;
+package com.anicloud.interfaces.facade.dto.user;
 
-import com.anicloud.application.dto.device.DeviceDto;
+import com.anicloud.interfaces.facade.dto.device.DeviceDto;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -11,6 +11,7 @@ import java.util.Set;
 public class UserDto implements Serializable {
     private static final long serialVersionUID = 3910975546944201608L;
 
+    public Integer id;
     public String hashUserId;
     public String email;
     public String screenName;
@@ -27,10 +28,11 @@ public class UserDto implements Serializable {
     public UserDto() {
     }
 
-    public UserDto(String hashUserId, String email, String screenName,
+    public UserDto(Integer id,String hashUserId, String email, String screenName,
                    String accessToken, String tokenType, String refreshToken,
                    Long expiresIn, String scope, Long createTime,
                    Set<DeviceDto> deviceSet) {
+        this.id=id;
         this.hashUserId = hashUserId;
         this.email = email;
         this.screenName = screenName;
@@ -46,7 +48,8 @@ public class UserDto implements Serializable {
     @Override
     public String toString() {
         return "UserDto{" +
-                "hashUserId='" + hashUserId + '\'' +
+                "id=" + id +
+                ", hashUserId='" + hashUserId + '\'' +
                 ", email='" + email + '\'' +
                 ", screenName='" + screenName + '\'' +
                 ", accessToken='" + accessToken + '\'' +
