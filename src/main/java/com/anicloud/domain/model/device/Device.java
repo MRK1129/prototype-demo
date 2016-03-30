@@ -11,7 +11,6 @@ import java.io.Serializable;
 public class Device implements Serializable {
     private static final long serialVersionUID = 770683175237083245L;
 
-    public Integer id;
     public String identificationCode;       // id of device, consist of masterDeviceId and slaveDeviceId
     public String name;
     public DeviceState deviceState;
@@ -25,10 +24,9 @@ public class Device implements Serializable {
     public Device() {
     }
 
-    public Device(Integer id, String identificationCode, String name,
+    public Device(String identificationCode, String name,
                   DeviceState deviceState, DeviceLogicState logicState,
                   String deviceType, String deviceGroup, User owner) {
-        this.id = id;
         this.identificationCode = identificationCode;
         this.name = name;
         this.deviceState = deviceState;
@@ -41,7 +39,6 @@ public class Device implements Serializable {
     @Override
     public String toString() {
         return "Device{" +
-                "id=" + id +
                 ", identificationCode='" + identificationCode + '\'' +
                 ", name='" + name + '\'' +
                 ", deviceState=" + deviceState +

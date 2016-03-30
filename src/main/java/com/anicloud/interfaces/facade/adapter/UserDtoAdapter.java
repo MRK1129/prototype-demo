@@ -63,7 +63,7 @@ public class UserDtoAdapter {
         if(deviceDto == null){
             return null;
         }
-        return new Device(deviceDto.id,deviceDto.identificationCode,
+        return new Device(deviceDto.identificationCode,
                 deviceDto.name,deviceDto.deviceState,deviceDto.logicState,
                 deviceDto.deviceType,deviceDto.deviceGroup,toDomain(deviceDto.owner)
         );
@@ -73,7 +73,7 @@ public class UserDtoAdapter {
         if(device == null){
             return null;
         }
-        return new DeviceDto(device.id,device.identificationCode,device.name,
+        return new DeviceDto(device.identificationCode,device.name,
                 device.deviceState,device.logicState,device.deviceType,
                 device.deviceGroup,toDto(device.owner)
         );

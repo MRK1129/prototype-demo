@@ -19,11 +19,12 @@ public class DevicePersistenceServiceImpl implements DevicePersistenceService{
 
     @PersistenceContext
     private EntityManager em;
-    private final String jpql="SELECT entity FROM DeviceDao entity WHERE entity.id=?1 ";
+
     @Override
-    public DeviceDao get(Integer id) {
+    public DeviceDao get(String identificationCode) {
+        String jpql="SELECT entity FROM DeviceDao entity WHERE entity.identificationCode=?1 ";
         TypedQuery<DeviceDao> query = em.createQuery(jpql,DeviceDao.class);
-        query.setParameter(1,id);
+        query.setParameter(1,identificationCode);
         return query.getSingleResult();
     }
 
@@ -53,11 +54,13 @@ public class DevicePersistenceServiceImpl implements DevicePersistenceService{
 
     @Override
     public void modifyDeviceState(DeviceDao deviceDao, DeviceState deviceState) {
-        //TODO
+        deviceDao.deviceState = deviceState;
+        em.merge(deviceDao);
     }
 
     @Override
     public void modifyDeviceLogicState(DeviceDao deviceDao, DeviceLogicState deviceLogicState) {
-        //TODO
+        deviceDao.logicState=deviceLogicState;
+        em.merge(deviceDao);
     }
 }

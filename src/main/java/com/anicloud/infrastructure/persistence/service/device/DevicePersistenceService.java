@@ -10,7 +10,7 @@ import java.util.List;
  * Created by MRK on 2016/3/25.
  */
 public interface DevicePersistenceService {
-    DeviceDao get(Integer id);
+    DeviceDao get(String identificationCode);
     List<DeviceDao> getAll();
     DeviceDao save(DeviceDao deviceDto);
     void saveAll(List<DeviceDao> deviceDaos);

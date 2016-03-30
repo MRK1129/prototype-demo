@@ -13,8 +13,6 @@ import javax.persistence.*;
 @Table(name="t_device")
 public class DeviceDao {
 
-    @Id
-    public Integer id;
     @Column
     public String identificationCode;       // id of device, consist of masterDeviceId and slaveDeviceId
     @Column
@@ -34,10 +32,9 @@ public class DeviceDao {
     public DeviceDao() {
     }
 
-    public DeviceDao(Integer id,String identificationCode, String name,
+    public DeviceDao(String identificationCode, String name,
                      DeviceState deviceState, DeviceLogicState logicState,
                      String deviceType, String deviceGroup, UserDao owner) {
-        this.id = id;
         this.identificationCode = identificationCode;
         this.name = name;
         this.deviceState = deviceState;

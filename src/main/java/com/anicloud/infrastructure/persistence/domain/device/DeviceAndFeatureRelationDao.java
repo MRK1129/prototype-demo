@@ -2,9 +2,7 @@ package com.anicloud.infrastructure.persistence.domain.device;
 
 import com.anicloud.domain.model.device.Device;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -12,12 +10,16 @@ import java.util.List;
  * Created by MRK on 2016/3/29.
  */
 @Entity
-@Table(name = "t_device_feature_relation")
+@Table(name = "t_relation")
 public class DeviceAndFeatureRelationDao implements Serializable {
     private static final long serialVersionUID = 3854015421387292641L;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "device_id", referencedColumnName = "id")
     public Device device;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "t_device_and_feature_relation", inverseJoinColumns = @JoinColumn(name = "device_feature_id"), joinColumns = @JoinColumn(name = "relation_id"))
     public List<DeviceFeatureDao> deviceFeatureDaoList;
 
     public DeviceAndFeatureRelationDao() {

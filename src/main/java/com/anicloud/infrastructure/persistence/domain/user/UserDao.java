@@ -13,9 +13,6 @@ import java.util.Set;
 @Table(name="t_user")
 public class UserDao {
 
-    @Id
-    @Column(name = "id")
-    public Integer id;
     @Column(length = 50)
     public String hashUserId;
     @Column(length = 30)
@@ -40,11 +37,11 @@ public class UserDao {
     public UserDao() {
     }
 
-    public UserDao(Integer id,String hashUserId, String email, String screenName,
+    public UserDao(String hashUserId, String email, String screenName,
                    String accessToken, String tokenType, String refreshToken,
                    Long expiresIn, String scope, Long createTime,
                    Set<DeviceDao> deviceSet) {
-        this.id=id;
+
         this.hashUserId = hashUserId;
         this.email = email;
         this.screenName = screenName;
