@@ -13,6 +13,7 @@ import java.util.Set;
 @Table(name="t_user")
 public class UserDao {
 
+    @Id
     @Column(length = 50)
     public String hashUserId;
     @Column(length = 30)
@@ -54,4 +55,19 @@ public class UserDao {
         this.deviceSet = deviceSet;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        UserDao userDao = (UserDao) o;
+
+        return hashUserId != null ? hashUserId.equals(userDao.hashUserId) : userDao.hashUserId == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return hashUserId != null ? hashUserId.hashCode() : 0;
+    }
 }

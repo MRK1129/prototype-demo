@@ -101,14 +101,14 @@ public class DeviceFeatureDaoAdapter {
         if (stubIdentityDao == null) {
             return null;
         }
-        return new StubIdentity(stubIdentityDao.groupId, stubIdentityDao.stubId);
+        return new StubIdentity(stubIdentityDao.id,stubIdentityDao.groupId, stubIdentityDao.stubId);
     }
 
     public static StubIdentityDao toDao(StubIdentity stubIdentity) {
         if (stubIdentity == null) {
             return null;
         }
-        return new StubIdentityDao(stubIdentity.groupId, stubIdentity.stubId);
+        return new StubIdentityDao(stubIdentity.id,stubIdentity.groupId, stubIdentity.stubId);
     }
 
     public static List<StubIdentity> toDomainByList(List<StubIdentityDao> stubIdentityDaos) {

@@ -7,13 +7,15 @@ import java.io.Serializable;
  */
 public class StubIdentityDto implements Serializable {
     private static final long serialVersionUID = -7561790604261831728L;
+    public Integer id;
     public Long groupId;
     public Integer stubId;
 
     public StubIdentityDto() {
     }
 
-    public StubIdentityDto(Long groupId, Integer stubId) {
+    public StubIdentityDto(Integer id,Long groupId, Integer stubId) {
+        this.id=id;
         this.groupId = groupId;
         this.stubId = stubId;
     }
@@ -25,6 +27,7 @@ public class StubIdentityDto implements Serializable {
 
         StubIdentityDto that = (StubIdentityDto) o;
 
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (groupId != null ? !groupId.equals(that.groupId) : that.groupId != null) return false;
         return stubId != null ? stubId.equals(that.stubId) : that.stubId == null;
 
@@ -32,7 +35,8 @@ public class StubIdentityDto implements Serializable {
 
     @Override
     public int hashCode() {
-        int result = groupId != null ? groupId.hashCode() : 0;
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (groupId != null ? groupId.hashCode() : 0);
         result = 31 * result + (stubId != null ? stubId.hashCode() : 0);
         return result;
     }
@@ -40,7 +44,8 @@ public class StubIdentityDto implements Serializable {
     @Override
     public String toString() {
         return "StubIdentityDto{" +
-                "groupId=" + groupId +
+                "id=" + id +
+                ", groupId=" + groupId +
                 ", stubId=" + stubId +
                 '}';
     }

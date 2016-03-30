@@ -34,7 +34,7 @@ public class UserServiceTest {
 
     @Test
     public void testSave() throws Exception {
-        User user = new User(1,"stu01","mirkamil@anicloud.com",
+        User user = new User("stu01","mirkamil@anicloud.com",
                 "Mirkamil","465asd894a6dsa","Code","12456asd231sad",1400L,"read",15464L,null);
         userService.save(user);
     }

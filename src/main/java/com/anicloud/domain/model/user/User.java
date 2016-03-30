@@ -24,7 +24,6 @@ public class User implements Serializable {
     @Resource
     private UserPersistenceService userPersistenceService;
 
-    public Integer id;
     public String hashUserId;
     public String email;
     public String screenName;
@@ -41,10 +40,9 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(Integer id, String hashUserId, String email, String screenName,
+    public User( String hashUserId, String email, String screenName,
                 String accessToken, String tokenType, String refreshToken,
                 Long expiresIn, String scope, Long createTime, Set<Device> deviceSet) {
-        this.id = id;
         this.hashUserId = hashUserId;
         this.email = email;
         this.screenName = screenName;

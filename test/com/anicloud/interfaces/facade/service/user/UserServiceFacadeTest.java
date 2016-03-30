@@ -43,14 +43,14 @@ public class UserServiceFacadeTest {
 
     @Test
     public void testSave() throws Exception {
-        UserDto userDto = new UserDto(1, "stu01", "mirkamil@anicloud.com",
+        UserDto userDto = new UserDto( "stu01", "mirkamil@anicloud.com",
                 "Mirkamil", "465asd894a6dsa", "Code", "12456asd231sad", 1400L, "read", 15464L, null);
         userServiceFacade.save(userDto);
     }
 
     @Test
     public void testModify() throws Exception {
-        UserDto userDto = new UserDto(1, "anicloud001", "mirkamil@anicloud.com",
+        UserDto userDto = new UserDto( "anicloud001", "mirkamil@anicloud.com",
                 "Mirkamil", "465asd894a6dsa", "Code", "12456asd231sad", 1400L, "read", 15464L, null);
         userServiceFacade.modify(userDto);
     }

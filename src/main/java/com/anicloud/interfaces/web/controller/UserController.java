@@ -1,7 +1,10 @@
 package com.anicloud.interfaces.web.controller;
 
+import com.ani.octopus.commons.accout.dto.AccountDto;
 import com.ani.octopus.service.agent.core.config.AnicelMeta;
 import com.ani.octopus.service.agent.core.http.RestTemplateFactory;
+import com.ani.octopus.service.agent.service.account.AccountService;
+import com.ani.octopus.service.agent.service.account.AccountServiceImpl;
 import com.ani.octopus.service.agent.service.oauth.AniOAuthService;
 import com.ani.octopus.service.agent.service.oauth.AniOAuthServiceImpl;
 import com.ani.octopus.service.agent.service.oauth.dto.*;
@@ -37,11 +40,14 @@ public class UserController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String validataAccess(@RequestParam String username, HttpServletRequest request) {
-        UserDto userDto = userServiceFacade.getUserByhashUserId(username);
+    public String validataAccess(@RequestParam String email, HttpServletRequest request) {
+        AccountService accountService = new AccountServiceImpl();
+        AccountDto accountDto = accountService.getByEmail(email);
+        UserDto userDto = userServiceFacade.getUserByEmail(email);
         if (userDto != null) {
             HttpSession session = request.getSession();
             session.setAttribute("user", userDto);
+            session.setAttribute("account",accountDto);
             if (userDto.accessToken != null && userDto.accessToken != "") {
                 Long currentTime = System.currentTimeMillis();
                 if (userDto.expiresIn - (currentTime - userDto.createTime) / 1000 < TOKEN_REFRESH_TIME_INTERVAL_IN_SECONDS) {

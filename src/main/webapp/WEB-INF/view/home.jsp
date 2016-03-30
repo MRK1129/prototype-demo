@@ -11,6 +11,6 @@
     <title>Home</title>
 </head>
 <body>
-    欢迎${user.screenName}
+    Welcome back!!!
 </body>
 </html>

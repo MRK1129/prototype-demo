@@ -14,7 +14,7 @@
 <body>
 <div style="width:20%;height: 20%;;margin: 0px auto;background-color: aquamarine">
     <form action='${pageContext.request.contextPath}/login' method="post">
-        请输入用户名：<input name="username"><br />
+        请输入邮箱：<input name="email"><br />
         <input type="submit" value="提交">
     </form>
 </div>

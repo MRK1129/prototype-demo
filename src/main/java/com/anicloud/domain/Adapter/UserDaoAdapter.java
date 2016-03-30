@@ -19,7 +19,7 @@ public class UserDaoAdapter {
         if(userDao == null){
             return null;
         }
-        return new User(userDao.id,userDao.hashUserId,userDao.email,
+        return new User(userDao.hashUserId,userDao.email,
                 userDao.screenName,userDao.accessToken,userDao.tokenType,
                 userDao.refreshToken,userDao.expiresIn,userDao.scope,
                 userDao.createTime,toDomain(userDao.deviceSet)
@@ -30,7 +30,7 @@ public class UserDaoAdapter {
         if (user == null){
             return null;
         }
-        return new UserDao(user.id,user.hashUserId,user.email,
+        return new UserDao(user.hashUserId,user.email,
                 user.screenName,user.accessToken,user.tokenType,
                 user.refreshToken,user.expiresIn,user.scope,
                 user.createTime,toDao(user.deviceSet)
@@ -63,7 +63,7 @@ public class UserDaoAdapter {
         if(deviceDao == null){
             return null;
         }
-        return new Device(deviceDao.id,deviceDao.identificationCode,
+        return new Device(deviceDao.identificationCode,
                 deviceDao.name,deviceDao.deviceState,deviceDao.logicState,
                 deviceDao.deviceType,deviceDao.deviceGroup,toDomain(deviceDao.owner)
         );
@@ -73,7 +73,7 @@ public class UserDaoAdapter {
         if(device == null){
             return null;
         }
-        return new DeviceDao(device.id,device.identificationCode,device.name,
+        return new DeviceDao(device.identificationCode,device.name,
                 device.deviceState,device.logicState,device.deviceType,
                 device.deviceGroup,toDao(device.owner)
         );

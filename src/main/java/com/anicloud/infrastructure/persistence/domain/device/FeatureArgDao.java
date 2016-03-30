@@ -2,17 +2,25 @@ package com.anicloud.infrastructure.persistence.domain.device;
 
 import com.ani.bus.service.commons.dto.anidevice.stub.DataType;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
  * Created by MRK on 2016/3/23.
  */
+@Entity
+@Table(name = "t_feature_arg")
 public class FeatureArgDao implements Serializable {
     private static final long serialVersionUID = 579534051061487033L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;
+    @Column(length = 20)
     public String name;
+    @Column
     public DataType dataType;
+    @Column(length = 30)
     public String screenName;
 
     public FeatureArgDao() {

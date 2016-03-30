@@ -19,7 +19,7 @@ public class UserDtoAdapter {
         if(userDto == null){
             return null;
         }
-        return new User(userDto.id,userDto.hashUserId,userDto.email,
+        return new User(userDto.hashUserId,userDto.email,
                 userDto.screenName,userDto.accessToken,userDto.tokenType,
                 userDto.refreshToken,userDto.expiresIn,userDto.scope,
                 userDto.createTime,toDomain(userDto.deviceSet)
@@ -30,7 +30,7 @@ public class UserDtoAdapter {
         if (user == null){
             return null;
         }
-        return new UserDto(user.id,user.hashUserId,user.email,
+        return new UserDto(user.hashUserId,user.email,
                 user.screenName,user.accessToken,user.tokenType,
                 user.refreshToken,user.expiresIn,user.scope,
                 user.createTime,toDto(user.deviceSet)

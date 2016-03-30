@@ -94,14 +94,14 @@ public class DeviceFeatureDtoAdapter {
         if (stubIdentityDto == null) {
             return null;
         }
-        return new StubIdentity(stubIdentityDto.groupId, stubIdentityDto.stubId);
+        return new StubIdentity(stubIdentityDto.id,stubIdentityDto.groupId, stubIdentityDto.stubId);
     }
 
     public static StubIdentityDto toDto(StubIdentity stubIdentity) {
         if (stubIdentity == null) {
             return null;
         }
-        return new StubIdentityDto(stubIdentity.groupId, stubIdentity.stubId);
+        return new StubIdentityDto(stubIdentity.id,stubIdentity.groupId, stubIdentity.stubId);
     }
 
     public static List<StubIdentity> toDomain(List<StubIdentityDto> stubIdentityDtoList) {
