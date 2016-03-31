@@ -9,8 +9,17 @@ import java.util.List;
 public class DeviceDtoAndFeatureDtoRelation implements Serializable {
     private static final long serialVersionUID = -7767572100822489560L;
 
+    private Integer id;
     private DeviceDto deviceDto;
     private List<DeviceFeatureDto> deviceFeatureDtos;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public DeviceDto getDeviceDto() {
         return deviceDto;

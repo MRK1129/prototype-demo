@@ -100,7 +100,6 @@
             <artifactId>aspectjweaver</artifactId>
             <version>1.8.7</version>
         </dependency>
-
         <!-- validation -->
         <dependency>
             <groupId>javax.validation</groupId>

@@ -22,8 +22,7 @@ public class StubIdentityDao implements Serializable {
     public StubIdentityDao() {
     }
 
-    public StubIdentityDao(Integer id,Long groupId, Integer stubId) {
-        this.id=id;
+    public StubIdentityDao(Long groupId, Integer stubId) {
         this.groupId = groupId;
         this.stubId = stubId;
     }

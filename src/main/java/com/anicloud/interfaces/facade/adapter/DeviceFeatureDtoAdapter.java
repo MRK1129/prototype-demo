@@ -33,7 +33,7 @@ public class DeviceFeatureDtoAdapter {
         if (deviceFeature == null) {
             return null;
         }
-        return new DeviceFeatureDto(deviceFeature.id, deviceFeature.name,
+        return new DeviceFeatureDto(deviceFeature.name,
                 deviceFeature.desc, toDto(deviceFeature.inputArgs),
                 toDto(deviceFeature.stubIdentityList),
                 toDto(deviceFeature.inputArgMapping)
@@ -82,7 +82,7 @@ public class DeviceFeatureDtoAdapter {
         }
         Set<FeatureArgDto> featureArgDtoSet = new HashSet<>();
         for (FeatureArg featureArg : featureArgs) {
-            FeatureArgDto featureArgDto = new FeatureArgDto(featureArg.id, featureArg.name,
+            FeatureArgDto featureArgDto = new FeatureArgDto(featureArg.name,
                     featureArg.dataType, featureArg.screenName
             );
             featureArgDtoSet.add(featureArgDto);
@@ -101,7 +101,7 @@ public class DeviceFeatureDtoAdapter {
         if (stubIdentity == null) {
             return null;
         }
-        return new StubIdentityDto(stubIdentity.id,stubIdentity.groupId, stubIdentity.stubId);
+        return new StubIdentityDto(stubIdentity.groupId, stubIdentity.stubId);
     }
 
     public static List<StubIdentity> toDomain(List<StubIdentityDto> stubIdentityDtoList) {

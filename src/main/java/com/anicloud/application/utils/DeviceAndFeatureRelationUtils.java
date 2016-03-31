@@ -40,4 +40,7 @@ public class DeviceAndFeatureRelationUtils {
         return null;
     }
 
+    public Device buildDevice(DeviceMasterObjInfoDto deviceMasterObjInfoDto){
+        return null;
+    }
 }

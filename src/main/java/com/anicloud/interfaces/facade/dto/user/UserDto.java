@@ -11,6 +11,7 @@ import java.util.Set;
 public class UserDto implements Serializable {
     private static final long serialVersionUID = 3910975546944201608L;
 
+    public Integer id;
     public String hashUserId;
     public String email;
     public String screenName;
@@ -46,6 +47,7 @@ public class UserDto implements Serializable {
     @Override
     public String toString() {
         return "UserDto{" +
+                "id=" + id +
                 ", hashUserId='" + hashUserId + '\'' +
                 ", email='" + email + '\'' +
                 ", screenName='" + screenName + '\'' +

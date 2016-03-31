@@ -19,12 +19,6 @@ public class UserServiceFacadeImpl implements UserServiceFacade {
     private UserService userService;
 
     @Override
-    public UserDto getUserById(Integer id) {
-        User user = userService.getUserById(id);
-        return UserDtoAdapter.toDto(user);
-    }
-
-    @Override
     public UserDto getUserByhashUserId(String hashUserId) {
         User user = userService.getUserByhashUserId(hashUserId);
         return UserDtoAdapter.toDto(user);

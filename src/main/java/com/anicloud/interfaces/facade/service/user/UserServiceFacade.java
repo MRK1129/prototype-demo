@@ -9,7 +9,6 @@ import java.util.List;
  */
 public interface UserServiceFacade {
 
-    UserDto getUserById(Integer id);
     UserDto getUserByhashUserId(String hashUserId);
     UserDto getUserByEmail(String email);
     List<UserDto> getAll();

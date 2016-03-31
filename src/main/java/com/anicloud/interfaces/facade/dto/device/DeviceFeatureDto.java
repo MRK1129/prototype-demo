@@ -20,11 +20,10 @@ public class DeviceFeatureDto implements Serializable {
     public DeviceFeatureDto() {
     }
 
-    public DeviceFeatureDto(Integer id, String name,
+    public DeviceFeatureDto(String name,
                             String desc, Set<FeatureArgDto> inputArgs,
                             List<StubIdentityDto> stubIdentityList,
                             Map<String, Map<StubIdentityDto, String>> inputArgMapping) {
-        this.id = id;
         this.name = name;
         this.desc = desc;
         this.inputArgs = inputArgs;

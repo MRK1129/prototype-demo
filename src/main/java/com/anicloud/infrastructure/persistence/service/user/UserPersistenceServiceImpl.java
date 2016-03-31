@@ -19,17 +19,6 @@ public class UserPersistenceServiceImpl implements UserPersistenceService {
     public EntityManager em;
 
     @Override
-    public UserDao getUserDaoById(Integer id) {
-        String jpql="SELECT entity FROM UserDao as entity WHERE entity.id=?1";
-        TypedQuery<UserDao> query = em.createQuery(jpql,UserDao.class);
-        query.setParameter(1,id);
-        if(query.getResultList().size()<=0){
-            return null;
-        }
-        return query.getSingleResult();
-    }
-
-    @Override
     public UserDao getUserDaoByhashUserId(String hashUserId) {
         String jpql="SELECT entity FROM UserDao as entity WHERE entity.hashUserId=?1";
         TypedQuery<UserDao> query = em.createQuery(jpql,UserDao.class);

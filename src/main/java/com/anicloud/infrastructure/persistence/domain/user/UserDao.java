@@ -14,6 +14,8 @@ import java.util.Set;
 public class UserDao {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Integer id;
     @Column(length = 50)
     public String hashUserId;
     @Column(length = 30)

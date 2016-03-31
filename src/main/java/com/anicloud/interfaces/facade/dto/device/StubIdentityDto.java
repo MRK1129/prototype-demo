@@ -1,5 +1,9 @@
 package com.anicloud.interfaces.facade.dto.device;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
@@ -14,8 +18,7 @@ public class StubIdentityDto implements Serializable {
     public StubIdentityDto() {
     }
 
-    public StubIdentityDto(Integer id,Long groupId, Integer stubId) {
-        this.id=id;
+    public StubIdentityDto(Long groupId, Integer stubId) {
         this.groupId = groupId;
         this.stubId = stubId;
     }

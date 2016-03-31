@@ -8,7 +8,6 @@ import java.util.List;
  * Created by MRK on 2016/3/29.
  */
 public interface UserPersistenceService {
-    UserDao getUserDaoById(Integer id);
     UserDao getUserDaoByhashUserId(String hashUserId);
     UserDao getUserDaoByEmail(String email);
     List<UserDao> getAll();

@@ -14,8 +14,7 @@ public class FeatureArgDto {
     public FeatureArgDto() {
     }
 
-    public FeatureArgDto(Integer id, String name, DataType dataType, String screenName) {
-        this.id = id;
+    public FeatureArgDto(String name, DataType dataType, String screenName) {
         this.name = name;
         this.dataType = dataType;
         this.screenName = screenName;

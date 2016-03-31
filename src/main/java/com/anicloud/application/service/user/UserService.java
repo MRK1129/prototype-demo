@@ -8,7 +8,6 @@ import java.util.List;
  * Created by MRK on 2016/3/28.
  */
 public interface UserService {
-    User getUserById(Integer id);
     User getUserByhashUserId(String hashUserId);
     User getUserByEmail(String email);
     List<User> getAll();

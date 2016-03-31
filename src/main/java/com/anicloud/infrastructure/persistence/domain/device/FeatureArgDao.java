@@ -26,8 +26,7 @@ public class FeatureArgDao implements Serializable {
     public FeatureArgDao() {
     }
 
-    public FeatureArgDao(Integer id, String name, DataType dataType, String screenName) {
-        this.id = id;
+    public FeatureArgDao(String name, DataType dataType, String screenName) {
         this.name = name;
         this.dataType = dataType;
         this.screenName = screenName;

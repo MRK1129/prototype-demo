@@ -14,6 +14,8 @@ import javax.persistence.*;
 public class DeviceDao {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Integer id;
     @Column
     public String identificationCode;       // id of device, consist of masterDeviceId and slaveDeviceId
     @Column
@@ -28,6 +30,7 @@ public class DeviceDao {
     @Column
     public String deviceGroup;
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = true)
     public UserDao owner;
 
     public DeviceDao() {
@@ -52,12 +55,29 @@ public class DeviceDao {
 
         DeviceDao deviceDao = (DeviceDao) o;
 
+        if (id != null ? !id.equals(deviceDao.id) : deviceDao.id != null) return false;
         return identificationCode != null ? identificationCode.equals(deviceDao.identificationCode) : deviceDao.identificationCode == null;
 
     }
 
     @Override
     public int hashCode() {
-        return identificationCode != null ? identificationCode.hashCode() : 0;
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (identificationCode != null ? identificationCode.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "DeviceDao{" +
+                "id=" + id +
+                ", identificationCode='" + identificationCode + '\'' +
+                ", name='" + name + '\'' +
+                ", deviceState=" + deviceState +
+                ", logicState=" + logicState +
+                ", deviceType='" + deviceType + '\'' +
+                ", deviceGroup='" + deviceGroup + '\'' +
+                ", owner=" + owner +
+                '}';
     }
 }

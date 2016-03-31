@@ -9,6 +9,8 @@ import java.util.Set;
 /**
  * Created by MRK on 2016/3/23.
  */
+@Entity
+@Table(name = "t_device_feature")
 public class DeviceFeatureDao implements Serializable{
     private static final long serialVersionUID = -2605834315350791947L;
 
@@ -25,17 +27,16 @@ public class DeviceFeatureDao implements Serializable{
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name="stubIdentity_id",referencedColumnName ="id" )
     public List<StubIdentityDao> stubIdentityList;
-    //TODO
-    public Map<String, Map<StubIdentityDao, String>> inputArgMapping;
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name="deviceFeatureInputArg_id",referencedColumnName ="id" )
+    public List<DeviceFeatureInputArg> inputArgMapping;
 
     public DeviceFeatureDao() {
     }
 
-    public DeviceFeatureDao(Integer id, String name, String desc,
-                            Set<FeatureArgDao> inputArgs,
+    public DeviceFeatureDao(String name, String desc, Set<FeatureArgDao> inputArgs,
                             List<StubIdentityDao> stubIdentityList,
-                            Map<String, Map<StubIdentityDao, String>> inputArgMapping) {
-        this.id = id;
+                            List<DeviceFeatureInputArg> inputArgMapping) {
         this.name = name;
         this.desc = desc;
         this.inputArgs = inputArgs;

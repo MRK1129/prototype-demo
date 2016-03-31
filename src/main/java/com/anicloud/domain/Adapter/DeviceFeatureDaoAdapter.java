@@ -3,9 +3,7 @@ package com.anicloud.domain.Adapter;
 import com.anicloud.domain.model.device.DeviceFeature;
 import com.anicloud.domain.model.device.FeatureArg;
 import com.anicloud.domain.model.device.StubIdentity;
-import com.anicloud.infrastructure.persistence.domain.device.DeviceFeatureDao;
-import com.anicloud.infrastructure.persistence.domain.device.FeatureArgDao;
-import com.anicloud.infrastructure.persistence.domain.device.StubIdentityDao;
+import com.anicloud.infrastructure.persistence.domain.device.*;
 
 import java.util.*;
 
@@ -21,7 +19,7 @@ public class DeviceFeatureDaoAdapter {
         return new DeviceFeature(deviceFeatureDao.id, deviceFeatureDao.name,
                 deviceFeatureDao.desc, toDomainBySet(deviceFeatureDao.inputArgs),
                 toDomainByList(deviceFeatureDao.stubIdentityList),
-                toDomain(deviceFeatureDao.inputArgMapping)
+                convertToDomain(deviceFeatureDao.inputArgMapping)
         );
     }
 
@@ -29,9 +27,9 @@ public class DeviceFeatureDaoAdapter {
         if (deviceFeature == null) {
             return null;
         }
-        return new DeviceFeatureDao(deviceFeature.id, deviceFeature.name, deviceFeature.desc,
+        return new DeviceFeatureDao(deviceFeature.name, deviceFeature.desc,
                 toDaoBySet(deviceFeature.inputArgs), toDaoByList(deviceFeature.stubIdentityList),
-                toDao(deviceFeature.inputArgMapping)
+                convertToDao(deviceFeature.inputArgMapping)
         );
     }
 
@@ -70,7 +68,7 @@ public class DeviceFeatureDaoAdapter {
         if (featureArg == null) {
             return null;
         }
-        return new FeatureArgDao(featureArg.id, featureArg.name,
+        return new FeatureArgDao(featureArg.name,
                 featureArg.dataType, featureArg.screenName
         );
     }
@@ -101,14 +99,14 @@ public class DeviceFeatureDaoAdapter {
         if (stubIdentityDao == null) {
             return null;
         }
-        return new StubIdentity(stubIdentityDao.id,stubIdentityDao.groupId, stubIdentityDao.stubId);
+        return new StubIdentity(stubIdentityDao.id, stubIdentityDao.groupId, stubIdentityDao.stubId);
     }
 
     public static StubIdentityDao toDao(StubIdentity stubIdentity) {
         if (stubIdentity == null) {
             return null;
         }
-        return new StubIdentityDao(stubIdentity.id,stubIdentity.groupId, stubIdentity.stubId);
+        return new StubIdentityDao(stubIdentity.groupId, stubIdentity.stubId);
     }
 
     public static List<StubIdentity> toDomainByList(List<StubIdentityDao> stubIdentityDaos) {
@@ -133,55 +131,61 @@ public class DeviceFeatureDaoAdapter {
         return stubIdentityDaos;
     }
 
-    public static Map<String, Map<StubIdentity, String>> toDomain(Map<String, Map<StubIdentityDao, String>> inputArgDaoMapping) {
-        if (inputArgDaoMapping == null) {
+    public static Map<String, Map<StubIdentity, String>> convertToDomain(List<DeviceFeatureInputArg> deviceFeatureInputArgs) {
+        if (deviceFeatureInputArgs == null) {
             return null;
         }
-        Map<String, Map<StubIdentity, String>> inputArgMapping = new HashMap<>();
-        Iterator<Map.Entry<String, Map<StubIdentityDao, String>>> iterator = inputArgDaoMapping.entrySet().iterator();
-        while (iterator.hasNext()) {
-            Map.Entry<String, Map<StubIdentityDao, String>> entry = iterator.next();
-            inputArgMapping.put(entry.getKey(), toDomainByMap(entry.getValue()));
+        Map<String, Map<StubIdentity, String>> inputArg = new HashMap<>();
+        for (DeviceFeatureInputArg deviceFeatureInputArg : deviceFeatureInputArgs) {
+            List<StubIdentityMapping> stubMapping = deviceFeatureInputArg.getStubIdentityMappings();
+            Map<StubIdentity, String> map = new HashMap<>();
+            for (StubIdentityMapping stubIdentityMapping : stubMapping) {
+                map.put(stubIdentityMapping.getStubIdentity(), stubIdentityMapping.getFeatureName());
+            }
+            inputArg.put(deviceFeatureInputArg.getFeatureName(), map);
         }
-        return inputArgMapping;
+        return inputArg;
     }
 
-    public static Map<String, Map<StubIdentityDao, String>> toDao(Map<String, Map<StubIdentity, String>> inputArgMapping) {
-        if (inputArgMapping == null) {
+    public static List<DeviceFeatureInputArg> convertToDao(Map<String, Map<StubIdentity, String>> inputArg) {
+        if (inputArg == null) {
             return null;
         }
-        Map<String, Map<StubIdentityDao, String>> inputArgDaomapping = new HashMap<>();
-        Iterator<Map.Entry<String, Map<StubIdentity, String>>> iterator = inputArgMapping.entrySet().iterator();
+        List<DeviceFeatureInputArg> deviceFeatureInputArgList = new ArrayList<>();
+        Iterator<Map.Entry<String, Map<StubIdentity, String>>> iterator = inputArg.entrySet().iterator();
         while (iterator.hasNext()) {
             Map.Entry<String, Map<StubIdentity, String>> entry = iterator.next();
-            inputArgDaomapping.put(entry.getKey(), toDaoByMap(entry.getValue()));
+            DeviceFeatureInputArg deviceFeatureInputArg = new DeviceFeatureInputArg();
+            List<StubIdentityMapping> stubIdentityMappingList = convertToList(entry.getValue());
+            deviceFeatureInputArg.setFeatureName(entry.getKey());
+            deviceFeatureInputArg.setStubIdentityMappings(stubIdentityMappingList);
+            deviceFeatureInputArgList.add(deviceFeatureInputArg);
         }
-        return inputArgDaomapping;
+        return deviceFeatureInputArgList;
     }
 
-    public static Map<StubIdentity, String> toDomainByMap(Map<StubIdentityDao, String> inputArgDaoMapping) {
-        if (inputArgDaoMapping == null) {
+    public static Map<StubIdentity, String> convertToMap(List<StubIdentityMapping> stubIdentityMapping) {
+        if (stubIdentityMapping == null) {
             return null;
         }
-        Map<StubIdentity, String> inputArgMapping = new HashMap<>();
-        Iterator<Map.Entry<StubIdentityDao, String>> iterator = inputArgDaoMapping.entrySet().iterator();
-        while (iterator.hasNext()) {
-            Map.Entry<StubIdentityDao, String> entry = iterator.next();
-            inputArgMapping.put(toDomain(entry.getKey()), entry.getValue());
+        Map<StubIdentity, String> map = new HashMap<>();
+        for (StubIdentityMapping stubIdentityMap : stubIdentityMapping) {
+            map.put(stubIdentityMap.getStubIdentity(), stubIdentityMap.getFeatureName());
         }
-        return inputArgMapping;
+        return map;
     }
 
-    public static Map<StubIdentityDao, String> toDaoByMap(Map<StubIdentity, String> inputArgMapping) {
-        if (inputArgMapping == null) {
+    public static List<StubIdentityMapping> convertToList(Map<StubIdentity, String> map) {
+        if (map == null) {
             return null;
         }
-        Map<StubIdentityDao, String> inputArgDaoMapping = new HashMap<>();
-        Iterator<Map.Entry<StubIdentity, String>> iterator = inputArgMapping.entrySet().iterator();
+        List<StubIdentityMapping> stubIdentityMappingList = new ArrayList<>();
+        Iterator<Map.Entry<StubIdentity, String>> iterator = map.entrySet().iterator();
         while (iterator.hasNext()) {
             Map.Entry<StubIdentity, String> entry = iterator.next();
-            inputArgDaoMapping.put(toDao(entry.getKey()), entry.getValue());
+            StubIdentityMapping stubIdentityMapping = new StubIdentityMapping(entry.getKey(), entry.getValue());
+            stubIdentityMappingList.add(stubIdentityMapping);
         }
-        return inputArgDaoMapping;
+        return stubIdentityMappingList;
     }
 }

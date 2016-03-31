@@ -21,12 +21,6 @@ public class UserServiceImpl implements UserService {
     private UserPersistenceService userPersistenceService;
 
     @Override
-    public User getUserById(Integer id) {
-        UserDao userDao = userPersistenceService.getUserDaoById(id);
-        return UserDaoAdapter.toDomain(userDao);
-    }
-
-    @Override
     public User getUserByhashUserId(String hashUserId) {
         UserDao userDao = userPersistenceService.getUserDaoByhashUserId(hashUserId);
         return UserDaoAdapter.toDomain(userDao);
